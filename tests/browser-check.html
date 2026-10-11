@@ -1,0 +1,59 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Trivia browser verification</title>
+<style>
+body{margin:16px;background:#dfe5e7;font:16px system-ui;color:#00274c}button,select{font:inherit;padding:8px;margin-right:10px}#result{white-space:pre-wrap;font:14px monospace;max-height:170px;overflow:auto;margin:12px 0}iframe{border:0;display:block;background:#f8f5ed;transform-origin:top left}#stage{overflow:hidden}#summary{font-weight:700;margin:12px 0}
+</style>
+<h1 style="font-size:24px;margin:0 0 12px">Trivia browser verification</h1>
+<button id="run">Run full checks</button>
+<select id="size" aria-label="Viewport"><option value="1920,1080">1920 × 1080</option><option value="1366,768">1366 × 768</option><option value="375,812">375 × 812</option><option value="320,740">320 × 740</option></select>
+<select id="view" aria-label="Screen"><option value="board">Board</option><option value="q7">SWIPE question</option><option value="q8">Credit-score question</option><option value="a8">Credit-score reveal</option><option value="a11">Families reveal</option><option value="a12">Disney reveal</option></select>
+<div id="summary">Ready</div><div id="result"></div>
+<div id="stage"><iframe id="game" title="Trivia preview" src="../index.html"></iframe></div>
+<script>
+const frame=document.getElementById('game'), summary=document.getElementById('summary'), result=document.getElementById('result');
+let assertions=0, failures=[],running=false;
+const wait=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+const doc=()=>frame.contentDocument, win=()=>frame.contentWindow, el=id=>doc().getElementById(id), click=id=>el(id).click();
+function check(test,label){assertions++;if(!test){failures.push(label);result.textContent+='FAIL '+label+'\n';}}
+function resize(width,height){frame.style.width=width+'px';frame.style.height=height+'px';const scale=Math.min(1,(innerWidth-40)/width,(innerHeight-310)/height);frame.style.transform=`scale(${scale})`;document.getElementById('stage').style.height=height*scale+'px';}
+function open(id){doc().querySelector(`[data-id="${id}"]`).click();}
+function key(key,target=doc().activeElement){const EventCtor=win().KeyboardEvent;target.dispatchEvent(new EventCtor('keydown',{key,bubbles:true,cancelable:true}));}
+function played(){return [...doc().querySelectorAll('.tile.played')].map(t=>+t.dataset.id);}
+async function reload(){await new Promise(resolve=>{frame.addEventListener('load',resolve,{once:true});win().location.reload();});await wait();}
+function show(){const [w,h]=document.getElementById('size').value.split(',').map(Number);resize(w,h);click('back');const v=document.getElementById('view').value;if(v!=='board'){open(+v.slice(1));if(v[0]==='a')click('reveal');}}
+document.getElementById('size').onchange=show;document.getElementById('view').onchange=show;
+document.getElementById('run').onclick=async()=>{
+ if(running)return;running=true;assertions=0;failures=[];result.textContent='';summary.textContent='Checking…';
+ try {
+ resize(1366,768);click('reset');
+ const qs=win().CID_QUESTIONS;
+ check(qs.length===12,'12 supplied questions');check(doc().querySelectorAll('.center-tile').length===4,'four Start here badges');
+ check(qs.map(q=>'ABCD'[q.correct]).join(',')==='C,A,C,B,D,D,B,B,C,B,B,A','all correct mappings');
+ for(const q of qs){
+  open(q.id);check(el('answer').hidden,'answer hidden on open '+q.id);check(!el('answer').textContent.includes(q.explanation),'old explanation cleared '+q.id);check(doc().activeElement===el('question-screen'),'screen focus '+q.id);check(el('question-title').textContent===q.question,'question wording '+q.id);check([...doc().querySelectorAll('.option-text')].every((e,i)=>e.textContent===q.options[i]),'options '+q.id);check(!played().includes(q.id),'open does not mark played '+q.id);
+  click('reveal');check(!el('answer').hidden,'reveal visible '+q.id);check(el('explanation').textContent===q.explanation,'explanation '+q.id);check(el('source-label').textContent===q.source,'source '+q.id);check(el('source-link').href===q.url,'source URL '+q.id);check(el('researchers').textContent===q.researchers,'researchers '+q.id);check(doc().querySelector('.option.correct .option-text').textContent===q.options[q.correct],'correct option '+q.id);check(el('answer-title').textContent===`Correct answer: ${'ABCD'[q.correct]}. ${q.options[q.correct]}`,'answer label '+q.id);check(played().includes(q.id),'reveal marks played '+q.id);
+  click('back');check(doc().activeElement.dataset.id===String(q.id),'return focus '+q.id);open(q.id);check(el('answer').hidden&&doc().querySelectorAll('.correct').length===0,'replay hides answer '+q.id);click('back');
+ }
+ await reload();check(played().length===12,'played status persists after refresh');
+ win().localStorage.setItem('trivia-qa-unrelated','keep');click('reset');check(played().length===0&&!el('board').hidden,'reset returns clean board');check(win().localStorage.getItem('trivia-qa-unrelated')==='keep','reset preserves unrelated storage');win().localStorage.removeItem('trivia-qa-unrelated');await reload();check(played().length===0,'reset persists');
+ for(const random of [0,.5,.999999]){
+  click('reset');const original=win().Math.random;win().Math.random=()=>random;const seen=new Set();
+  for(let i=0;i<12;i++){click('surprise');const title=el('question-title').textContent;check(!seen.has(title),'random does not repeat '+random+' '+i);seen.add(title);click('reveal');click('back');}
+  click('surprise');check(!el('question-screen').hidden,'random works after all played '+random);win().Math.random=original;
+ }
+ click('reset');open(1);key(' ');check(!el('answer').hidden,'Space reveals focused question');key('Escape');check(!el('board').hidden,'Escape returns board');open(2);key('Enter');check(!el('answer').hidden,'Enter reveals focused question');key('n');check(el('answer').hidden&&el('question-title').textContent!==qs[1].question,'N opens unplayed question');
+ click('back');open(3);el('back').focus();key('Enter');check(el('answer').hidden,'Enter on button does not reveal');click('help');const oldTitle=el('question-title').textContent;key('n');check(el('help-dialog').open&&el('question-title').textContent===oldTitle,'dialog isolates shortcuts');click('done-help');await wait();check(doc().activeElement===el('help'),'help restores focus');
+ for(const [width,height] of [[1920,1080],[1366,768],[375,812],[320,740]]){
+  resize(width,height);click('reset');await wait();
+  check(doc().documentElement.scrollWidth<=width,'board no horizontal overflow '+width);
+  if(width>1000)check(doc().documentElement.scrollHeight<=height,'board fits projector '+width+' (actual '+doc().documentElement.scrollHeight+')');
+  for(const q of qs){open(q.id);for(const reveal of [false,true]){if(reveal)click('reveal');await wait();check(doc().documentElement.scrollWidth<=width,'no horizontal overflow '+width+' q'+q.id+' reveal '+reveal);if(width>1000)check(doc().documentElement.scrollHeight<=height,'fits projector '+width+' q'+q.id+' reveal '+reveal+' (actual '+doc().documentElement.scrollHeight+')');}click('back');}
+ }
+ click('reset');resize(1920,1080);document.getElementById('size').value='1920,1080';document.getElementById('view').value='board';await wait();
+ const resources=win().performance.getEntriesByType('resource');check(resources.every(r=>new URL(r.name).origin===win().location.origin),'no external resources requested');
+ summary.textContent=`${assertions} checks · ${failures.length} failures`;if(!failures.length)result.textContent='PASS: content, hidden/replayed answers, keyboard, focus, persistence, reset, random exhaustion, projector and mobile geometry, local-only resources.';
+ }catch(e){summary.textContent='Test error';result.textContent+=String(e)+'\n'+e.stack;}finally{running=false;}
+};
+frame.addEventListener('load',()=>{if(!running){const params=new URLSearchParams(location.search);if(params.has('size'))document.getElementById('size').value=params.get('size');if(params.has('view'))document.getElementById('view').value=params.get('view');show();}});
+</script>
