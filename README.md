@@ -32,7 +32,7 @@ If Safari skips buttons with Tab, use Option+Tab or enable “Press Tab to highl
 
 ## Edit content
 
-All wording, options, answer mappings, explanations, researcher names, and source URLs are in `questions.js`. Each question has four options. The `correct` field is an index: **0 = A, 1 = B, 2 = C, 3 = D**. Keep each numeric `id` unique. The `category` is `center` for the four “Start here” questions, or `research`. Save the file and refresh the browser to see edits.
+All wording, options, answer mappings, explanations, researcher names, and source URLs are in `questions.js`. Each question has four options. The `correct` field is an index: **0 = A, 1 = B, 2 = C, 3 = D**. Keep each numeric `id` unique. The `category` is `center` for the four “Stone Center” questions, or `research`. Save the file and refresh the browser to see edits.
 
 Source links open a new tab only when clicked. They need an internet connection; the trivia experience does not. Illustrations are inline SVG, fonts are system fonts, and the supplied center logo is stored locally in `assets/stone-center-logo.png`.
 

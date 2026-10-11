@@ -50,7 +50,7 @@
       button.dataset.id = q.id;
       const badge = document.createElement('span');
       badge.className = 'tile-badge';
-      badge.textContent = q.category === 'center' ? 'Start here' : 'Research';
+      badge.textContent = q.category === 'center' ? 'Stone Center' : 'Research';
       const mark = document.createElement('span');
       mark.className = 'tile-art';
       mark.setAttribute('aria-hidden', 'true');
@@ -62,7 +62,7 @@
       bottom.className = 'tile-bottom';
       const state = document.createElement('span');
       state.className = 'tile-state';
-      state.textContent = played.has(q.id) ? '✓ Played' : 'Explore';
+      state.textContent = played.has(q.id) ? '✓ Played' : 'Open question';
       const arrow = document.createElement('span');
       arrow.textContent = '↗';
       arrow.setAttribute('aria-hidden', 'true');
@@ -84,7 +84,7 @@
     $('vote-prompt').hidden = false;
     $('reveal').hidden = false;
     $('next').hidden = true;
-    $('question-category').textContent = q.category === 'center' ? 'Start here · Meet the center' : 'Research · Look a little closer';
+    $('question-category').textContent = q.category === 'center' ? 'Stone Center' : 'Research';
     $('question-topic').textContent = q.tile;
     $('question-title').textContent = q.question;
     $('question-screen').classList.toggle('long-question', q.question.length > 210);

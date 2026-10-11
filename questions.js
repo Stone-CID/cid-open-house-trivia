@@ -2,7 +2,7 @@
 window.CID_QUESTIONS = [
   {
     "id": 1,
-    "tile": "CID beginnings",
+    "tile": "CID history",
     "category": "center",
     "question": "What year was the Center for Inequality Dynamics founded?",
     "options": [
@@ -19,7 +19,7 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 2,
-    "tile": "Detroit dollars",
+    "tile": "Medicaid in Detroit",
     "category": "research",
     "question": "According to Robert Manduca’s research, Medicaid brings roughly as much money into metropolitan Detroit’s economy as which industry?",
     "options": [
@@ -29,14 +29,14 @@ window.CID_QUESTIONS = [
       "Agriculture"
     ],
     "correct": 0,
-    "explanation": "This compares contributions to the region’s “economic base”—money coming in from outside the region. Health benefits support local businesses and jobs as well as their recipients.",
+    "explanation": "This compares contributions to the region’s “economic base” (money coming in from outside the region). Health benefits support local businesses and jobs as well as their recipients.",
     "researchers": "Robert Manduca",
     "source": "2025 working paper • Author’s summary at Equitable Growth",
     "url": "https://equitablegrowth.org/medicaid-and-snap-cuts-in-congressional-republicans-budget-bill-will-negatively-impact-local-economies/"
   },
   {
     "id": 3,
-    "tile": "A changing map",
+    "tile": "Regional income gaps",
     "category": "research",
     "question": "Which U.S. region had smaller Black–white family income disparities than the rest of the country by 2017?",
     "options": [
@@ -53,7 +53,7 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 4,
-    "tile": "Meet the director",
+    "tile": "Center director",
     "category": "center",
     "question": "Who is the current director of the Stone Center for Inequality Dynamics?",
     "options": [
@@ -104,7 +104,7 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 7,
-    "tile": "Take a SWIPE",
+    "tile": "SWIPE",
     "category": "center",
     "question": "What does the Stone Center’s working group acronym “SWIPE” stand for?",
     "options": [
@@ -121,7 +121,7 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 8,
-    "tile": "The weight of a score",
+    "tile": "Credit scores and anxiety",
     "category": "research",
     "question": "After accounting for differences in credit scores and other economic factors, what did Davon Norris find about credit-score-related anxiety?",
     "options": [
@@ -138,7 +138,7 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 9,
-    "tile": "Closing regional gaps",
+    "tile": "Government benefits",
     "category": "research",
     "question": "Which category of government benefits contributed the largest total reduction in income inequality between U.S. regions in a 2024 study?",
     "options": [
@@ -155,7 +155,7 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 10,
-    "tile": "What’s happening at CID?",
+    "tile": "SWIPE events",
     "category": "center",
     "question": "What is the name of SWIPE’s 2026–2028 series exploring inequality and democratic power?",
     "options": [
@@ -189,7 +189,7 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 12,
-    "tile": "Disney’s tiny towns",
+    "tile": "Disney municipalities",
     "category": "research",
     "question": "Two Florida municipalities associated with Disney World contained about $9.9 billion in appraised property value. How many residents did they have combined in the researchers’ data?",
     "options": [
