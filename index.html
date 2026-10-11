@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#00274C">
+  <title>Think you know inequality? · Stone Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="questions.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <img class="brand-logo" src="assets/stone-center-logo.png" width="1840" height="108" alt="Stone Center for Inequality Dynamics, University of Michigan">
+    <div class="event-label">Research on social inequality in a supportive intellectual community.</div>
+  </header>
+
+  <main id="board" tabindex="-1" aria-labelledby="board-title">
+    <section class="board-intro">
+      <div>
+        <p class="eyebrow">Open house trivia</p>
+        <h1 id="board-title">Think you know <em>inequality?</em></h1>
+        <p class="invitation">Pick a question. Take a guess. Learn something surprising.</p>
+      </div>
+      <div class="board-action">
+        <button id="surprise" class="button primary"><span aria-hidden="true">✳</span> Surprise me <span aria-hidden="true">↗</span></button>
+        <p>Join anytime • Play one question or a few</p>
+      </div>
+    </section>
+    <div class="tile-grid" id="tiles" aria-label="Choose a question"></div>
+    <div class="board-note"><span class="note-dot" aria-hidden="true"></span> New to the center? Try a “Start here” question.</div>
+  </main>
+
+  <main id="question-screen" class="question-screen" tabindex="-1" aria-labelledby="question-title" hidden>
+    <div class="question-meta"><span id="question-category" class="eyebrow"></span><span class="question-topic" id="question-topic"></span></div>
+    <div class="question-layout">
+      <section class="question-story">
+        <h1 id="question-title"></h1>
+        <div id="vote-prompt" class="vote-prompt">
+          <div class="finger-count" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+          <p>Vote with 1, 2, 3, or 4 fingers—or tell the host.</p>
+          <span class="small-invitation">A good guess starts a good conversation.</span>
+        </div>
+        <section id="answer" class="answer" aria-labelledby="answer-title" hidden>
+          <p class="eyebrow">The answer, and the bigger picture</p>
+          <h2 id="answer-title" tabindex="-1"></h2>
+          <p id="explanation" class="explanation"></p>
+          <div class="source-details"><p id="researchers"></p><p><span id="source-label"></span> <a id="source-link" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a></p></div>
+        </section>
+      </section>
+      <ol id="options" class="options" role="list" aria-label="Answer options"></ol>
+    </div>
+    <div class="question-actions">
+      <button id="back" class="button secondary"><span aria-hidden="true">←</span> Back to board</button>
+      <button id="reveal" class="button primary">Reveal answer <span aria-hidden="true">↗</span></button>
+      <button id="next" class="button primary" hidden>Next random question <span aria-hidden="true">→</span></button>
+    </div>
+  </main>
+
+  <footer class="utility-bar">
+    <span class="footer-message">Stone Center for Inequality Dynamics Fall 2026 Open House</span>
+    <div class="utility-controls">
+      <span id="storage-notice" hidden>Played status lasts for this session.</span>
+      <button id="reset" class="utility-button">Reset played questions</button>
+      <button id="help" class="utility-button"><span class="key-icon" aria-hidden="true">⌨</span> Keyboard help</button>
+      <button id="fullscreen" class="utility-button" aria-pressed="false" hidden><span aria-hidden="true">⛶</span> <span id="fullscreen-label">Fullscreen</span></button>
+    </div>
+  </footer>
+
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="dialog-heading"><h2 id="help-title">A few host shortcuts</h2><button id="close-help" class="close-button" aria-label="Close keyboard help">×</button></div>
+    <dl class="shortcuts"><div><dt><kbd>Space</kbd> / <kbd>Enter</kbd></dt><dd>Reveal the answer when the question screen has focus</dd></div><div><dt><kbd>Esc</kbd></dt><dd>Back to the board</dd></div><div><dt><kbd>N</kbd></dt><dd>Open a random unplayed question</dd></div><div><dt><kbd>Tab</kbd></dt><dd>Move between controls; Enter or Space activates buttons</dd></div></dl>
+    <p>Answers stay hidden until you reveal them. Played questions are always available to replay.</p>
+    <button id="done-help" class="button primary">Got it</button>
+  </dialog>
+  <div id="status" class="visually-hidden" role="status" aria-live="polite"></div>
+</body>
+</html>
