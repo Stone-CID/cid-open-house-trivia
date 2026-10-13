@@ -54,7 +54,7 @@
       const mark = document.createElement('span');
       mark.className = 'tile-art';
       mark.setAttribute('aria-hidden', 'true');
-      mark.innerHTML = `<svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">${marks[i]}</svg>`;
+      mark.innerHTML = `<svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">${marks[i % marks.length]}</svg>`;
       const title = document.createElement('span');
       title.className = 'tile-title';
       title.textContent = q.tile;
@@ -155,7 +155,7 @@
     save();
     renderBoard();
     backToBoard(false);
-    $('status').textContent = 'Played questions reset. All 12 questions are available.';
+    $('status').textContent = `Played questions reset. All ${questions.length} questions are available.`;
   });
   $('help').addEventListener('click', () => {
     helpOrigin = $('help');

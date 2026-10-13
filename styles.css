@@ -33,7 +33,7 @@ h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-sp
 .primary:hover { background: #ffda4c; }
 .secondary { border-color: #bcc5c8; background: transparent; }
 .secondary:hover { background: #eeeae0; }
-.tile-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.1vw, 21px); }
+.tile-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.1vw, 21px); }
 .tile { position: relative; min-height: clamp(138px, 10.2vw, 196px); display: flex; flex-direction: column; align-items: flex-start; text-align: left; border: 1px solid #cbd1d1; border-radius: 11px; padding: clamp(17px, 1.25vw, 24px); background: #fffefa; transition: border-color .18s, transform .18s, box-shadow .18s; overflow: hidden; }
 .tile:hover { transform: translateY(-3px); border-color: #607b8c; box-shadow: 0 6px 14px #00274c0b; }
 .center-tile { background: #edf1f1; border-color: #bdcbce; }

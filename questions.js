@@ -38,7 +38,7 @@ window.CID_QUESTIONS = [
     "id": 3,
     "tile": "Regional income gaps",
     "category": "research",
-    "question": "Which U.S. region had smaller Black–white family income disparities than the rest of the country by 2017?",
+    "question": "Which U.S. region has smaller Black–white family income disparities than the rest of the country, as of 2017?",
     "options": [
       "The Northeast",
       "The Midwest",
@@ -131,7 +131,7 @@ window.CID_QUESTIONS = [
       "Neither group reported meaningful anxiety about scores"
     ],
     "correct": 1,
-    "explanation": "Differences in the scores themselves did not fully explain differences in how people experienced being scored. The study combined interviews with an original national survey.",
+    "explanation": "Although people with worse credit scores and in more precarious economic positions were more stressed about their score, this did not fully explain racial differences in how people experienced being scored. The study combines interviews and an original national survey to develop a theoretical perspective about why this is the case.",
     "researchers": "Davon Norris",
     "source": "“A Racialized Engine of Anxiety?” • Administrative Science Quarterly, 2025",
     "url": "https://journals.sagepub.com/doi/10.1177/00018392251339638"
@@ -191,7 +191,7 @@ window.CID_QUESTIONS = [
     "id": 12,
     "tile": "Disney municipalities",
     "category": "research",
-    "question": "Two Florida municipalities associated with Disney World contained about $9.9 billion in appraised property value. How many residents did they have combined in the researchers’ data?",
+    "question": "Two Florida municipalities associated with Disney World contained about $9.9 billion in appraised property value. How many total residents did they have, as of the 2020 Census?",
     "options": [
       "51",
       "510",
@@ -203,5 +203,39 @@ window.CID_QUESTIONS = [
     "researchers": "Robert Manduca, Brian Highsmith, and Jacob Waggoner",
     "source": "“Tax base fragmentation as a dimension of metropolitan inequality” • Socio-Economic Review, 2026; online 2025",
     "url": "https://academic.oup.com/ser/article/24/1/331/8286993"
+  },
+  {
+    "id": 13,
+    "tile": "Affiliate benefits",
+    "category": "center",
+    "question": "Which of these can you do as a Stone Center affiliate?",
+    "options": [
+      "Attend Speaker Series talks",
+      "Present work in progress at the Early Ideas Workshop",
+      "Use the common workspace during ISR business hours",
+      "All of the above"
+    ],
+    "correct": 3,
+    "explanation": "Affiliation connects U-M students, postdocs, staff, and faculty with a community studying inequality, plus opportunities to share research and a place to work.",
+    "researchers": "",
+    "source": "Stone Center • Affiliate and associate membership",
+    "url": "https://inequality.umich.edu/get-involved/"
+  },
+  {
+    "id": 14,
+    "tile": "Beyond the talks",
+    "category": "center",
+    "question": "Beyond research talks, which activities can Stone Center affiliates take part in?",
+    "options": [
+      "Writing retreats",
+      "Informal gatherings",
+      "Book club",
+      "All of the above"
+    ],
+    "correct": 3,
+    "explanation": "Affiliates can participate in selected activities, including writing retreats, informal gatherings, and book club. Ask us how to get involved!",
+    "researchers": "",
+    "source": "Stone Center • Affiliate and associate membership",
+    "url": "https://inequality.umich.edu/get-involved/"
   }
 ];
