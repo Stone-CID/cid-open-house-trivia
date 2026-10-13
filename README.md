@@ -1,6 +1,6 @@
 # Stone Center open-house trivia
 
-A host-operated, offline trivia board with the 14 questions. No build, account, phone, or internet connection is needed.
+A host-operated, offline trivia board with the 15 questions. No build, account, phone, or internet connection is needed.
 
 ## Launch
 
@@ -15,7 +15,7 @@ Alternatively, from this folder run `python3 -m http.server 8000`, then open `ht
 - Use **Reveal answer** when ready. No answer selection is required.
 - Use **Back to board**, or **Next random question** after the reveal.
 - Played questions stay clickable. Opening any question hides the answer again.
-- Once every question is played, random selection draws from all 14. There is no game-over screen.
+- Once every question is played, random selection draws from all 15. There is no game-over screen.
 
 Use **Fullscreen** in the bottom bar when the browser supports it. The same control exits fullscreen; the browser’s Escape key may also exit it. If the control is unavailable, use your browser’s fullscreen command (on Mac, usually Control+Command+F).
 
@@ -32,7 +32,7 @@ If Safari skips buttons with Tab, use Option+Tab or enable “Press Tab to highl
 
 ## Edit content
 
-All wording, options, answer mappings, explanations, researcher names, and source URLs are in `questions.js`. Each question has four options. The `correct` field is an index: **0 = A, 1 = B, 2 = C, 3 = D**. Keep each numeric `id` unique. The `category` is `center` for the six “Stone Center” questions, or `research`. Save the file and refresh the browser to see edits.
+All wording, options, answer mappings, explanations, researcher names, and source URLs are in `questions.js`. Each question has four options. The `correct` field is an index: **0 = A, 1 = B, 2 = C, 3 = D**. Keep each numeric `id` unique. The `category` is `center` for the seven “Stone Center” questions, or `research`. Save the file and refresh the browser to see edits.
 
 Source links open a new tab only when clicked. They need an internet connection; the trivia experience does not. Illustrations are inline SVG, fonts are system fonts, and the supplied center logo is stored locally in `assets/stone-center-logo.png`.
 
@@ -53,6 +53,8 @@ GitHub Pages serves the `main` branch from the repository root. Changes committe
 The public site stores played status only in the visitor's browser; there is no server-side data collection.
 
 ## Verification
+
+The current 15-question version passes 489 browser checks for content, answer reveal and replay, keyboard and focus behavior, saved played status, reset, random selection, projector and mobile layouts, and local resources.
 
 Prior to the October 13 content revisions, Safari browser checks passed for all 12 original questions, reveal/replay behavior, focus, shortcuts, random selection until exhaustion, persistence, and reset. All question and reveal layouts fit 1920×1080 and 1366×768 viewports; 375 px and 320 px layouts had no horizontal overflow. The board and longest questions/reveals were visually inspected. Opening `index.html` directly also worked with the local server stopped, including saved played status across a refresh.
 

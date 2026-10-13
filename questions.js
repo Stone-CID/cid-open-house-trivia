@@ -206,36 +206,53 @@ window.CID_QUESTIONS = [
   },
   {
     "id": 13,
-    "tile": "Affiliate benefits",
+    "tile": "Early Ideas Workshop",
     "category": "center",
-    "question": "Which of these can you do as a Stone Center affiliate?",
+    "question": "You have a research idea that is still a work in progress. What can you do as a Stone Center affiliate?",
     "options": [
-      "Attend Speaker Series talks",
-      "Present work in progress at the Early Ideas Workshop",
-      "Use the common workspace during ISR business hours",
-      "All of the above"
+      "Wait until it is accepted by a journal",
+      "Present it at an Early Ideas Workshop",
+      "Present it only after becoming an associate",
+      "Attend workshops, but not present"
     ],
-    "correct": 3,
-    "explanation": "Affiliation connects U-M students, postdocs, staff, and faculty with a community studying inequality, plus opportunities to share research and a place to work.",
+    "correct": 1,
+    "explanation": "Stone Center affiliates can present work in progress at an Early Ideas Workshop.",
     "researchers": "",
-    "source": "Stone Center • Affiliate and associate membership",
+    "source": "Stone Center • Affiliates & Associates",
     "url": "https://inequality.umich.edu/get-involved/"
   },
   {
     "id": 14,
-    "tile": "Beyond the talks",
+    "tile": "Affiliate resources",
     "category": "center",
-    "question": "Beyond research talks, which activities can Stone Center affiliates take part in?",
+    "question": "Which of these can Stone Center affiliates take advantage of?",
     "options": [
-      "Writing retreats",
-      "Informal gatherings",
-      "Book club",
+      "Common workspace during ISR business hours",
+      "Monthly writing retreats",
+      "Happy hours, book club, and other informal events",
       "All of the above"
     ],
     "correct": 3,
-    "explanation": "Affiliates can participate in selected activities, including writing retreats, informal gatherings, and book club. Ask us how to get involved!",
+    "explanation": "Affiliates can use the common workspace during ISR business hours and participate in monthly writing retreats, happy hours, book club, and other informal events. Faculty, staff, and postdoc affiliates can also participate in the CID Writing Group.",
     "researchers": "",
-    "source": "Stone Center • Affiliate and associate membership",
+    "source": "Stone Center • Affiliates & Associates",
+    "url": "https://inequality.umich.edu/get-involved/"
+  },
+  {
+    "id": 15,
+    "tile": "Become an affiliate",
+    "category": "center",
+    "question": "Which describes joining the Stone Center as an affiliate?",
+    "options": [
+      "You must already have published inequality research",
+      "You must commit to attending two-thirds of Center events",
+      "U-M faculty, staff, postdocs, and students who want to get involved can sign up",
+      "You must present at a workshop every two years"
+    ],
+    "correct": 2,
+    "explanation": "U-M faculty, staff, postdocs, and students who want to get involved can sign up as Stone Center affiliates.",
+    "researchers": "",
+    "source": "Stone Center • Affiliates & Associates",
     "url": "https://inequality.umich.edu/get-involved/"
   }
 ];
