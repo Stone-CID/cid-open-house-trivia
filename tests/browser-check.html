@@ -28,18 +28,18 @@ document.getElementById('run').onclick=async()=>{
  try {
  resize(1366,768);click('reset');
  const qs=win().CID_QUESTIONS;
- check(qs.length===12,'12 supplied questions');check(doc().querySelectorAll('.center-tile').length===4,'four Start here badges');
- check(qs.map(q=>'ABCD'[q.correct]).join(',')==='C,A,C,B,D,D,B,B,C,B,B,A','all correct mappings');
+ check(qs.length===14,'14 questions');check(doc().querySelectorAll('.center-tile').length===6,'six Stone Center badges');
+ check(qs.map(q=>'ABCD'[q.correct]).join(',')==='C,A,C,B,D,D,B,B,C,B,B,A,D,D','all correct mappings');
  for(const q of qs){
   open(q.id);check(el('answer').hidden,'answer hidden on open '+q.id);check(!el('answer').textContent.includes(q.explanation),'old explanation cleared '+q.id);check(doc().activeElement===el('question-screen'),'screen focus '+q.id);check(el('question-title').textContent===q.question,'question wording '+q.id);check([...doc().querySelectorAll('.option-text')].every((e,i)=>e.textContent===q.options[i]),'options '+q.id);check(!played().includes(q.id),'open does not mark played '+q.id);
   click('reveal');check(!el('answer').hidden,'reveal visible '+q.id);check(el('explanation').textContent===q.explanation,'explanation '+q.id);check(el('source-label').textContent===q.source,'source '+q.id);check(el('source-link').href===q.url,'source URL '+q.id);check(el('researchers').textContent===q.researchers,'researchers '+q.id);check(doc().querySelector('.option.correct .option-text').textContent===q.options[q.correct],'correct option '+q.id);check(el('answer-title').textContent===`Correct answer: ${'ABCD'[q.correct]}. ${q.options[q.correct]}`,'answer label '+q.id);check(played().includes(q.id),'reveal marks played '+q.id);
   click('back');check(doc().activeElement.dataset.id===String(q.id),'return focus '+q.id);open(q.id);check(el('answer').hidden&&doc().querySelectorAll('.correct').length===0,'replay hides answer '+q.id);click('back');
  }
- await reload();check(played().length===12,'played status persists after refresh');
+ await reload();check(played().length===qs.length,'played status persists after refresh');
  win().localStorage.setItem('trivia-qa-unrelated','keep');click('reset');check(played().length===0&&!el('board').hidden,'reset returns clean board');check(win().localStorage.getItem('trivia-qa-unrelated')==='keep','reset preserves unrelated storage');win().localStorage.removeItem('trivia-qa-unrelated');await reload();check(played().length===0,'reset persists');
  for(const random of [0,.5,.999999]){
   click('reset');const original=win().Math.random;win().Math.random=()=>random;const seen=new Set();
-  for(let i=0;i<12;i++){click('surprise');const title=el('question-title').textContent;check(!seen.has(title),'random does not repeat '+random+' '+i);seen.add(title);click('reveal');click('back');}
+  for(let i=0;i<qs.length;i++){click('surprise');const title=el('question-title').textContent;check(!seen.has(title),'random does not repeat '+random+' '+i);seen.add(title);click('reveal');click('back');}
   click('surprise');check(!el('question-screen').hidden,'random works after all played '+random);win().Math.random=original;
  }
  click('reset');open(1);key(' ');check(!el('answer').hidden,'Space reveals focused question');key('Escape');check(!el('board').hidden,'Escape returns board');open(2);key('Enter');check(!el('answer').hidden,'Enter reveals focused question');key('n');check(el('answer').hidden&&el('question-title').textContent!==qs[1].question,'N opens unplayed question');
