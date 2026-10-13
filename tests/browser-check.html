@@ -28,8 +28,8 @@ document.getElementById('run').onclick=async()=>{
  try {
  resize(1366,768);click('reset');
  const qs=win().CID_QUESTIONS;
- check(qs.length===14,'14 questions');check(doc().querySelectorAll('.center-tile').length===6,'six Stone Center badges');
- check(qs.map(q=>'ABCD'[q.correct]).join(',')==='C,A,C,B,D,D,B,B,C,B,B,A,D,D','all correct mappings');
+ check(qs.length===15,'15 questions');check(doc().querySelectorAll('.center-tile').length===7,'seven Stone Center badges');
+ check(qs.map(q=>'ABCD'[q.correct]).join(',')==='C,A,C,B,D,D,B,B,C,B,B,A,B,D,C','all correct mappings');
  for(const q of qs){
   open(q.id);check(el('answer').hidden,'answer hidden on open '+q.id);check(!el('answer').textContent.includes(q.explanation),'old explanation cleared '+q.id);check(doc().activeElement===el('question-screen'),'screen focus '+q.id);check(el('question-title').textContent===q.question,'question wording '+q.id);check([...doc().querySelectorAll('.option-text')].every((e,i)=>e.textContent===q.options[i]),'options '+q.id);check(!played().includes(q.id),'open does not mark played '+q.id);
   click('reveal');check(!el('answer').hidden,'reveal visible '+q.id);check(el('explanation').textContent===q.explanation,'explanation '+q.id);check(el('source-label').textContent===q.source,'source '+q.id);check(el('source-link').href===q.url,'source URL '+q.id);check(el('researchers').textContent===q.researchers,'researchers '+q.id);check(doc().querySelector('.option.correct .option-text').textContent===q.options[q.correct],'correct option '+q.id);check(el('answer-title').textContent===`Correct answer: ${'ABCD'[q.correct]}. ${q.options[q.correct]}`,'answer label '+q.id);check(played().includes(q.id),'reveal marks played '+q.id);
