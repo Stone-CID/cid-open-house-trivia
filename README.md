@@ -54,6 +54,8 @@ The public site stores played status only in the visitor's browser; there is no 
 
 ## Verification
 
+The three affiliation questions use answers B, D, and C. The affiliate resources explanation includes the CID Writing Group for faculty, staff, and postdoc affiliates.
+
 The current 15-question version passes 489 browser checks for content, answer reveal and replay, keyboard and focus behavior, saved played status, reset, random selection, projector and mobile layouts, and local resources.
 
 Prior to the October 13 content revisions, Safari browser checks passed for all 12 original questions, reveal/replay behavior, focus, shortcuts, random selection until exhaustion, persistence, and reset. All question and reveal layouts fit 1920×1080 and 1366×768 viewports; 375 px and 320 px layouts had no horizontal overflow. The board and longest questions/reveals were visually inspected. Opening `index.html` directly also worked with the local server stopped, including saved played status across a refresh.
